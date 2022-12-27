@@ -26,9 +26,9 @@
 			--amber-500: #F59E0B;
 		}
 
-		* { position: relative; box-sizing: border-box; transition-duration: 0.25s; }
+		* { position: relative; box-sizing: border-box; /*transition-duration: 0.125s;*/ }
 		html, body { 
-			/*padding: 0 !important; margin: 0 !important;*/ background-color: var(--warm-grey-50); scroll-behavior: smooth;
+			padding: 0 !important; margin: 0 !important; background-color: var(--warm-grey-50); scroll-behavior: smooth;
 		}
 
 		html { font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 300; line-height: 1.5rem; color: var(--warm-grey-800); -webkit-text-size-adjust: none; }
@@ -39,14 +39,36 @@
 
 		/* navegador */
 		nav {
-			background-color: red;
-			width: 100%;
-			min-width: 16em;
+			position: absolute; display: flex; justify-content: space-between; top: 0px; left: 0px; right: 0px; width: 100%; height: 50px;
+			background-color: white;
 		}
+		/* desktop */
+		nav > .logo {	position: absolute;	top: 16px; left: 20px; height: 90px;}
+		nav > .menu {	display: flex; height: 100%; margin: 0; padding: 0 0 0 260px; }
+
+		/* isso está errado, tenho que corrigir a area do link */
+		nav > .menu a { display: flex; align-items: center; margin: 0; padding: 0 15px; color: var(--warm-grey-800); font-size: 1em; font-weight: 729; text-decoration: none; }
+		nav > .menu a:hover { color: var(--warm-grey-50); background-color: var(--warm-grey-800); }
 	</style>
 </head>
 <body>
 	<main>
+		<input id='drawermenu_toggle' type='checkbox'>
+		<nav>
+			<img class='logo' src='assets/logo.png' >
+			<div class='menu'>
+				<a href='#'>Coleções</a>
+				<a href='#'>Artistas</a>
+				<a href='#'>Quem Somos</a>
+				<a href='#'>Contatos</a>
+				<a href='#'>Shop</a>
+			</div>
+			<ul class='icons'>
+			</ul>
+			<ul class='hamburger'>
+			</ul>
+		</nav>
+
 		<h1>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 800<span>></span></h1>
 		<h2>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 729<span>></span></h2>
 		Vamos pro Japão? Penso um personagem de desenho animado.
