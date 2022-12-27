@@ -6,7 +6,7 @@
 	<title></title>
 	<style>
 		/* base stuff */
-		@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;729;800&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Poppins&display=swap');
 
 		:root {
 			--primary-color: #1ea69a;
@@ -26,11 +26,11 @@
 		}
 
 		* { position: relative; box-sizing: border-box; transition-duration: 0.25s; }
-		html, body { 
-			padding: 0 !important; margin: 0 !important; background-color: var(--warm-grey-50); scroll-behavior: smooth;
+		body, html { 
+			padding: 0 !important; margin: 0 !important; background-color: var(--warm-grey-50);
+			font-family: 'Poppins', sans-serif; font-size: 1rem; line-height: 1.5rem; color: var(--warm-grey-800);
+			scroll-behavior: smooth;
 		}
-		html { font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 300; font-size: 1.25rem; line-height: 1.75rem; color: var(--warm-grey-800); }
-		main { font-size: 1.25rem; line-height: 1.75rem; }
 		/*
 		::-webkit-scrollbar{ width: 1em; height: 1em; }
 		::-webkit-scrollbar-button{ width: 0; height: 0; }
@@ -41,9 +41,9 @@
 		::-webkit-scrollbar-corner{ background:transparent}
 		*/
 		main { display: flex;	flex-direction: column;	}
-
-		h1 { font-size: 2rem; line-height: 1; font-weight: 800; text-transform: uppercase; }
-		h2 { font-size: 2rem; line-height: 1; font-weight: 729; text-transform: uppercase; }
+		@media screen and (min-width: 750px) {
+			main { flex-direction: row;	}
+		}
 		p:first-child { margin-top: 0; }
 		p:last-child { margin-bottom: 0; }
 		a { color: var(--warm-grey-800); }
@@ -64,55 +64,53 @@
 		/* navegador */
 		#drawermenu_toggle { display: none; }
 		nav {	
-			position: fixed; width: 100%; top: 0px; left: 0px; right: 0px;	z-index: 100; height: 100vh; 
-			translate: 0 calc(-100vh + 96px); transition-property: translate; transition-duration: 0.5s;
+			position: fixed; top: 0px; left: 0px; right: 0px;	z-index: 100; height: 100vh; 
+			translate: 0 calc(-100vh + 6em); transition-property: translate; transition-duration: 0.5s;
+			-webkit-box-shadow: 0 0.25em 2em 0 rgb(0 0 0 / 9%);
+			-moz-box-shadow: 0 0.25em 2em 0 rgb(0 0 0 / 9%);
+			box-shadow: 0 0.25em 2em 0 rgb(0 0 0 / 9%);
 			background-color: var(--warm-grey-50);
 		}
 		#drawermenu_toggle:checked + nav { translate: 0; }
 		nav > div {
-			position: absolute; display: flex; flex-direction: row;
-			width: 100%; height: 96px; bottom: 0px; margin: 0 auto; padding: 16px; gap: 16px;
+			position: absolute; display: flex; flex-direction: row; justify-content: space-between;
+			width: 100%; height: 6em; bottom: 0px; margin: 0 auto; padding: 1em; gap: 1em;
 		}
 		@media screen and (min-width: 750px) {
-			nav {	
-				position: absolute; display: flex; height: 50px; background-color: white; z-index: 1000;
-				translate: 0; transition-property: none; 
-			}
-			nav > div {	position:relative; height: 100%; padding: 0 20px 0 260px	}
+			nav {	width: 15em; height: 100%; max-height: 100vh; right: auto; translate: 0; transition-property: none; }
+			nav > div {	position:relative; flex-direction: column; height: 100%	}
 		}
 
 		/* -- logo */
-		nav .logo { width: auto; height: 100%; }
+		nav img { width: auto; height: 100%; }
 		@media screen and (min-width: 750px) {
-			nav .logo { position: absolute;	top: 16px; left: 20px; height: 90px; }
+			nav img { width: 100%; height: auto; }
 		}
 
 		/* -- menu */
 		nav .menu { 
-			display: flex; flex-direction: column; justify-content:center; margin: 0; padding: 0; gap: 0; 
-			position: absolute; top: calc(-100vh + 96px); left: 0; right: 0; height: calc(100vh - 96px);
-			font-size: 1em; font-weight: 729;
+			display: flex; flex-direction: column; justify-content:center; margin: 0; padding: 0; gap: 1em; 
+			position: absolute; top: calc(-100vh + 6em); left: 0; right: 0; height: calc(100vh - 6em);
 		}
 		nav .menu li { list-style-type: none; margin: 0 auto; }
-		nav .menu li a { display: flex; min-height: 50px; height: 100%; align-items: center; padding: 0 15px; text-decoration: none; }
+		nav .menu li a { padding: 0.5em; text-decoration: none; }
 		nav .menu li a:hover { color: var(--warm-grey-50); background-color: var(--warm-grey-800); }
 		@media only screen and (min-width: 750px) {
-			nav .menu { position: relative; top: auto; height: auto; flex: 1; flex-direction: row; justify-content: left; }
+			nav .menu { position: relative; top: auto; height: auto; }
 			nav .menu li { margin: 0; }
 		}
 
 		/* -- shop / social */
-		nav .social, nav .shop { display: flex; margin: auto 0; padding: 0;  gap: 0.5em; font-size: 1em; }
-		nav .social li, nav .shop li { list-style-type: none; margin: 0 auto; }
+		nav .social, nav .shop { display: flex; margin: auto 0; gap: 0.5em; font-size: 1.25rem; }
 		nav .social { margin-left: auto; }
-		/*@media screen and (min-width: 750px) {
+		@media screen and (min-width: 750px) {
 			nav .social, nav .shop { margin: 0; }
 			nav .social { margin-top: auto; }
-		}*/
+		}
 
 		/* -- hamburger */
 		nav .hamburger { display: flex; z-index: 150;}
-		nav .hamburger_btn { display: flex; flex-direction: column; justify-content: center; margin: auto; width: 32px; height: 32px; cursor: pointer; z-index: 150; }
+		nav .hamburger_btn { display: flex; flex-direction: column; justify-content: center; margin: auto; width: 2em; height: 2em; cursor: pointer; z-index: 150; }
 		nav .hamburger_btn > span, 
 		nav .hamburger_btn > span::before,
 		nav .hamburger_btn > span::after {
@@ -131,9 +129,9 @@
 		}
 
 		/* conteúdo */
-		content { display: flex; flex-direction: column; width: 100%; min-height: 100vh; margin: 96px 0 0 0; }
+		content { display: flex; flex-direction: column; width: 100%; min-height: 100vh; margin: 6em 0 0 0; }
 		@media screen and (min-width: 750px) {
-			content { margin: 50px 0 0 0; }
+			content { margin: 0 0 0 15em; }
 		}
 
 		/* section */
@@ -143,10 +141,7 @@
 		section:last-child { margin-bottom: 0; }
 
 		/* hero */
-		section.hero { min-height: calc(100vh - 96px); background-position: center; background-size: cover; }
-		@media screen and (min-width: 750px) {
-			section.hero { min-height: calc(100vh - 50px); }
-		}
+		section.hero { min-height: calc(100vh - 6em); background-position: center; background-size: cover; }
 
 		/* scrool down animation */
 		.scrooldown { position: absolute; bottom: 2em; left: 0; right: 0; display: flex;
@@ -175,10 +170,10 @@
 </head>
 <body>
 	<main>
-		<input id='drawermenu_toggle' type='checkbox'>
+		<input id="drawermenu_toggle" type="checkbox" onchange="onHamburgerToggle(this)">
 		<nav>
 			<div>
-				<img class='logo' src='assets/logo.png'>
+				<img src='assets/logo.jpg'>
 				<ul class='menu'>
 					<li><a href='#'>Menu 1</a></li>
 					<li><a href='#'>Menu 2</a></li>
@@ -186,17 +181,17 @@
 					<li><a href='#'>Menu 4</a></li>
 					<li><a href='#'>Menu 5</a></li>
 				</ul>
-				<ul class='social'>
-					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
-					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
-					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
-				</ul>
-				<ul class='shop'>
-					<li><a href='#'><i class='fa-solid fa-bag-shopping'></i></a></li>
-					<li><a href='#'><i class='fa-solid fa-user'></i></a></li>
-				</ul>
-				<div class='hamburger'>
-					<label class='hamburger_btn' for='drawermenu_toggle'>
+				<div class='social'>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-instagram"></i>
+					<i class="fa-brands fa-instagram"></i>
+				</div>
+				<div class='shop'>
+					<i class="fa-solid fa-bag-shopping"></i>
+					<i class="fa-solid fa-user"></i>
+				</div>
+				<div class="hamburger">
+					<label class="hamburger_btn" for="drawermenu_toggle">
 						<span></span>
 					</label>
 				</div>

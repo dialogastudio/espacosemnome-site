@@ -37,18 +37,47 @@
 		h2 { font-size: 2rem; line-height: 1; font-weight: 729; text-transform: uppercase; }
 		main { font-size: 1.25rem; line-height: 1.75rem; }
 
-		/* navegador */
+		/* navegador mobile */
+		/* navegador desktop */
 		nav {
-			position: absolute; display: flex; justify-content: space-between; top: 0px; left: 0px; right: 0px; width: 100%; height: 50px;
-			background-color: white;
+			position: absolute; display: flex; justify-content: space-between; top: 0px; left: 0px; right: 0px; width: 100%; height: 50px; background-color: white; z-index: 1000;
 		}
-		/* desktop */
-		nav > .logo {	position: absolute;	top: 16px; left: 20px; height: 90px;}
+		nav > .logo {	position: absolute;	top: 16px; left: 20px; height: 90px; }
 		nav > .menu {	display: flex; height: 100%; margin: 0; padding: 0 0 0 260px; }
-
 		/* isso está errado, tenho que corrigir a area do link */
 		nav > .menu a { display: flex; align-items: center; margin: 0; padding: 0 15px; color: var(--warm-grey-800); font-size: 1em; font-weight: 729; text-decoration: none; }
 		nav > .menu a:hover { color: var(--warm-grey-50); background-color: var(--warm-grey-800); }
+
+		/* content */
+		content { display: flex; flex-direction: column; width: 100%; min-height: 100vh; margin: 20px 0 0 0; }
+
+		/* section */
+		section { margin: 0 auto; padding: 1em; max-width: 1440px; }
+		section.fill { max-width: 100%; margin: 0; padding: 0; }
+		section:first-child { margin-top: 0; }
+		section:last-child { margin-bottom: 0; }
+
+		/* hero */
+		section.hero { min-height: calc(100vh - 40px); background-position: center; background-size: cover; }
+
+		/* scrool down animation */
+		.scrooldown { position: absolute; bottom: 2em; left: 0; right: 0; display: flex;
+			filter: drop-shadow(0 0 0.75rem var(--warm-grey-800));
+		}
+		.scrooldown::before, .scrooldown::after {
+			content: ' ';
+			position: absolute; left: 0; right: 0; bottom: 0; width: 0; height: 4em; margin: 0 auto;
+			border-color: var(--warm-grey-50); border-style: none solid none none; border-width: 0.25em;
+		}
+		.scrooldown::after {
+			animation-name: scrooldownAnimation; animation-duration: 2s; 
+			animation-timing-function: linear; animation-iteration-count: infinite;
+		}
+		.scrooldown::before { width: 1.5em; height: 1.5em; rotate: 45deg; border-style: none solid solid none; }
+		@keyframes scrooldownAnimation {
+			0% { height: 0; bottom: 3.75em; } 50% { height: 4em; bottom: -0.25em; } 100% { height: 0em; bottom: -0.25em; }
+		}
+
 	</style>
 </head>
 <body>
@@ -69,9 +98,19 @@
 			</ul>
 		</nav>
 
-		<h1>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 800<span>></span></h1>
-		<h2>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 729<span>></span></h2>
-		Vamos pro Japão? Penso um personagem de desenho animado.
+		<content>
+			<!-- hero component -->
+			<section class='fill hero' style='background-image: url(https://placeimg.com/1280/720/arch/grayscale);'>
+				<div class='scrooldown'></div>
+			</section>
+
+			<section>
+				<h1>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 800<span>></span></h1>
+				<h2>O Louvor da Sombra em Tempos de Luz Neon <span><</span>font-weight: 729<span>></span></h2>
+				Vamos pro Japão? Penso um personagem de desenho animado.
+			</section>
+		</content>
+
 	</main>
 </body>
 </html>
