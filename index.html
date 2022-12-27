@@ -29,7 +29,7 @@
 		html, body { 
 			padding: 0 !important; margin: 0 !important; background-color: var(--warm-grey-50); scroll-behavior: smooth;
 		}
-		html { font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 300; font-size: 1.25rem; line-height: 1.75rem; color: var(--warm-grey-800); }
+		html { font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 300; color: var(--warm-grey-800); }
 		main { font-size: 1.25rem; line-height: 1.75rem; }
 		/*
 		::-webkit-scrollbar{ width: 1em; height: 1em; }
@@ -73,7 +73,7 @@
 			position: absolute; display: flex; flex-direction: row;
 			width: 100%; height: 96px; bottom: 0px; margin: 0 auto; padding: 16px; gap: 16px;
 		}
-		@media screen and (min-width: 750px) {
+		@media screen and (min-width: 1000px) {
 			nav {	
 				position: absolute; display: flex; height: 50px; background-color: white; z-index: 1000;
 				translate: 0; transition-property: none; 
@@ -83,7 +83,7 @@
 
 		/* -- logo */
 		nav .logo { width: auto; height: 100%; }
-		@media screen and (min-width: 750px) {
+		@media screen and (min-width: 1000px) {
 			nav .logo { position: absolute;	top: 16px; left: 20px; height: 90px; }
 		}
 
@@ -96,7 +96,7 @@
 		nav .menu li { list-style-type: none; margin: 0 auto; }
 		nav .menu li a { display: flex; min-height: 50px; height: 100%; align-items: center; padding: 0 15px; text-decoration: none; }
 		nav .menu li a:hover { color: var(--warm-grey-50); background-color: var(--warm-grey-800); }
-		@media only screen and (min-width: 750px) {
+		@media only screen and (min-width: 1000px) {
 			nav .menu { position: relative; top: auto; height: auto; flex: 1; flex-direction: row; justify-content: left; }
 			nav .menu li { margin: 0; }
 		}
@@ -105,7 +105,7 @@
 		nav .social, nav .shop { display: flex; margin: auto 0; padding: 0;  gap: 0.5em; font-size: 1em; }
 		nav .social li, nav .shop li { list-style-type: none; margin: 0 auto; }
 		nav .social { margin-left: auto; }
-		/*@media screen and (min-width: 750px) {
+		/*@media screen and (min-width: 1000px) {
 			nav .social, nav .shop { margin: 0; }
 			nav .social { margin-top: auto; }
 		}*/
@@ -126,13 +126,13 @@
 		#drawermenu_toggle:checked + nav .hamburger_btn span { background-color: transparent; }
 		#drawermenu_toggle:checked + nav .hamburger_btn span::before { top: 0px; rotate: 45deg; }
 		#drawermenu_toggle:checked + nav .hamburger_btn span::after { top: 0px; rotate: -45deg}
-		@media only screen and (min-width: 750px) {
+		@media only screen and (min-width: 1000px) {
 			nav > div .hamburger { display: none; }
 		}
 
 		/* conteúdo */
 		content { display: flex; flex-direction: column; width: 100%; min-height: 100vh; margin: 96px 0 0 0; }
-		@media screen and (min-width: 750px) {
+		@media screen and (min-width: 1000px) {
 			content { margin: 50px 0 0 0; }
 		}
 
@@ -144,7 +144,7 @@
 
 		/* hero */
 		section.hero { min-height: calc(100vh - 96px); background-position: center; background-size: cover; }
-		@media screen and (min-width: 750px) {
+		@media screen and (min-width: 1000px) {
 			section.hero { min-height: calc(100vh - 50px); }
 		}
 
@@ -180,11 +180,11 @@
 			<div>
 				<img class='logo' src='assets/logo.png'>
 				<ul class='menu'>
-					<li><a href='#'>Menu 1</a></li>
-					<li><a href='#'>Menu 2</a></li>
-					<li><a href='#'>Menu 3</a></li>
-					<li><a href='#'>Menu 4</a></li>
-					<li><a href='#'>Menu 5</a></li>
+					<li><a href='#'>Coleções</a></li>
+					<li><a href='#'>Artistas</a></li>
+					<li><a href='#'>Quem Somos</a></li>
+					<li><a href='#'>Contato</a></li>
+					<li><a href='#'>Shop</a></li>
 				</ul>
 				<ul class='social'>
 					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
