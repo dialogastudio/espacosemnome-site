@@ -67,6 +67,7 @@
 			position: fixed; width: 100%; top: 0px; left: 0px; right: 0px;	z-index: 100; height: 100vh; 
 			translate: 0 calc(-100vh + 96px); transition-property: translate; transition-duration: 0.5s;
 			background-color: var(--warm-grey-50);
+			text-transform: uppercase;
 		}
 		#drawermenu_toggle:checked + nav { translate: 0; }
 		nav > div {
@@ -75,7 +76,7 @@
 		}
 		@media screen and (min-width: 1000px) {
 			nav {	
-				position: absolute; display: flex; height: 50px; background-color: white; z-index: 1000;
+				display: flex; height: 50px; background-color: white; z-index: 1000;
 				translate: 0; transition-property: none; 
 			}
 			nav > div {	position:relative; height: 100%; padding: 0 20px 0 260px	}
@@ -137,7 +138,7 @@
 		}
 
 		/* section */
-		section { margin: 0 auto; padding: 1em; max-width: 1440px; }
+		section { margin: 0 auto; padding: 32px 20px; max-width: 1440px; }
 		section.fill { max-width: 100%; margin: 0; padding: 0; }
 		section:first-child { margin-top: 0; }
 		section:last-child { margin-bottom: 0; }
@@ -155,15 +156,15 @@
 		.scrooldown::before, .scrooldown::after {
 			content: ' ';
 			position: absolute; left: 0; right: 0; bottom: 0; width: 0; height: 4em; margin: 0 auto;
-			border-color: var(--warm-grey-50); border-style: none solid none none; border-width: 0.25em;
+			border-color: var(--warm-grey-50); border-style: none solid none none; border-width: 4px;
 		}
 		.scrooldown::after {
 			animation-name: scrooldownAnimation; animation-duration: 2s; 
 			animation-timing-function: linear; animation-iteration-count: infinite;
 		}
-		.scrooldown::before { width: 1.5em; height: 1.5em; rotate: 45deg; border-style: none solid solid none; }
+		.scrooldown::before { width: 25px; height: 25px; rotate: 45deg; border-style: none solid solid none; }
 		@keyframes scrooldownAnimation {
-			0% { height: 0; bottom: 3.75em; } 50% { height: 4em; bottom: -0.25em; } 100% { height: 0em; bottom: -0.25em; }
+			0% { height: 0; bottom: 48px; } 50% { height: 48px; bottom: 0; } 100% { height: 0; bottom: 0; }
 		}
 
 		/* footer */
