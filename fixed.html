@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+		/* base stuff */
+		@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;729;800&display=swap');
+
+		:root {
+			--primary-color: #1ea69a;
+			--primary-color-hover: #0C847A;
+			--secondary-color: #ea723d;
+
+			--warm-grey-50: #FAFAF9;
+			--warm-grey-100: #F5F5F4;
+			--warm-grey-200: #E7E5E4;
+			--warm-grey-300: #D6D3D1;
+			--warm-grey-400: #A8A29E;
+			--warm-grey-500: #78716C;
+			--warm-grey-800: #292524;
+
+			--green-800: #16A34A;
+			--amber-500: #F59E0B;
+		}
+
+		* { position: relative; box-sizing: border-box; transition-duration: 0.25s; }
+		html, body { 
+			padding: 0 !important; margin: 0 !important; background-color: var(--warm-grey-50); scroll-behavior: smooth;
+		}
+		html { font-family: 'Open Sans', sans-serif; font-size: 100%; font-weight: 300; color: var(--warm-grey-800); }
+		main { font-size: 1.25rem; line-height: 1.75rem; }
+		/*
+		::-webkit-scrollbar{ width: 1em; height: 1em; }
+		::-webkit-scrollbar-button{ width: 0; height: 0; }
+		::-webkit-scrollbar-thumb{ background: var(--warm-grey-800); border:0; }
+		::-webkit-scrollbar-thumb:hover{ background: var(--warm-grey-500) }
+		::-webkit-scrollbar-thumb:active{ background: var(--warm-grey-500) }
+		::-webkit-scrollbar-track{ background: var(--warm-grey-50); border:0 }
+		::-webkit-scrollbar-corner{ background:transparent}
+		*/
+		main { display: flex;	flex-direction: column;	}
+
+		h1 { font-size: 2rem; line-height: 1; font-weight: 800; text-transform: uppercase; }
+		h2 { font-size: 2rem; line-height: 1; font-weight: 729; text-transform: uppercase; }
+		p:first-child { margin-top: 0; }
+		p:last-child { margin-bottom: 0; }
+		a { color: var(--warm-grey-800); }
+
+		/* inline */
+		.text-left { text-align: left; }
+		.text-center { text-align: center; }
+		.text-right { text-align: right; }
+
+		.text-xs { font-size: 0.75rem; line-height: 1rem; }
+		.text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+		.text-base { font-size: 1rem; line-height: 1.5rem; }
+		.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+		.text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+		.text-2xl { font-size: 1.5rem; line-height: 2rem; }
+		.text-5xl	{ font-size: 3rem; line-height: 1; }
+
+		/* navegador */
+		#drawermenu_toggle { display: none; }
+		nav {	
+			position: fixed; width: 100%; top: 0px; left: 0px; right: 0px;	z-index: 100; height: 100vh; 
+			translate: 0 calc(-100vh + 96px); transition-property: translate; transition-duration: 0.5s;
+			background-color: var(--warm-grey-50);
+			text-transform: uppercase;
+		}
+		#drawermenu_toggle:checked + nav { translate: 0; }
+		nav > div {
+			position: absolute; display: flex; flex-direction: row;
+			width: 100%; height: 96px; bottom: 0px; margin: 0 auto; padding: 16px; gap: 16px;
+		}
+		@media screen and (min-width: 1000px) {
+			nav {	
+				display: flex; height: 50px; background-color: white; z-index: 1000;
+				translate: 0; transition-property: none; 
+			}
+			nav > div {	position:relative; height: 100%; padding: 0 20px 0 260px	}
+		}
+		@media screen and (min-width: 1200px) {
+			nav {	
+				display: flex; height: 50px; background-color: white; z-index: 1000;
+				translate: 0; transition-property: none; 
+			}
+			nav > div {	position:relative; height: 100%; padding: 0 20px 0 300px	}
+		}
+
+		/* -- logo */
+		nav .logo { width: auto; height: 100%; }
+		@media screen and (min-width: 1000px) {
+			nav .logo { position: absolute;	top: 16px; left: 20px; height: 90px; }
+		}
+
+		/* -- menu */
+		nav .menu { 
+			display: flex; flex-direction: column; justify-content:center; margin: 0; padding: 0; gap: 0; 
+			position: absolute; top: calc(-100vh + 96px); left: 0; right: 0; height: calc(100vh - 96px);
+			font-size: 1em; font-weight: 729;
+		}
+		nav .menu li { list-style-type: none; margin: 0 auto; }
+		nav .menu li a { display: flex; min-height: 50px; height: 100%; align-items: center; padding: 0 15px; text-decoration: none; }
+		nav .menu li a:hover { color: var(--warm-grey-500); }
+		@media only screen and (min-width: 1000px) {
+			nav .menu { position: relative; top: auto; height: auto; flex: 1; flex-direction: row; justify-content: left; }
+			nav .menu li { margin: 0; }
+		}
+
+		/* -- shop / social */
+		nav .social, nav .shop { display: flex; margin: auto 0; padding: 0;  gap: 0.5em; font-size: 1em; }
+		nav .social li, nav .shop li { list-style-type: none; margin: 0 auto; }
+		nav .social { margin-left: auto; }
+		/*@media screen and (min-width: 1000px) {
+			nav .social, nav .shop { margin: 0; }
+			nav .social { margin-top: auto; }
+		}*/
+
+		/* -- hamburger */
+		nav .hamburger { display: flex; z-index: 150;}
+		nav .hamburger_btn { display: flex; flex-direction: column; justify-content: center; margin: auto; width: 32px; height: 32px; cursor: pointer; z-index: 150; }
+		nav .hamburger_btn > span, 
+		nav .hamburger_btn > span::before,
+		nav .hamburger_btn > span::after {
+			display: block; position: absolute;	width: 100%; height: 0.25em;
+			background-color: var(--warm-grey-800);	transition-duration: 0.25s;
+		}
+		nav .hamburger_btn > span::before { content: ' '; top: -0.5em; }
+		nav .hamburger_btn > span::after { content: ' '; top: 0.5em; }
+		
+		#drawermenu_toggle[type=checkbox]:checked + nav {}
+		#drawermenu_toggle:checked + nav .hamburger_btn span { background-color: transparent; }
+		#drawermenu_toggle:checked + nav .hamburger_btn span::before { top: 0px; rotate: 45deg; }
+		#drawermenu_toggle:checked + nav .hamburger_btn span::after { top: 0px; rotate: -45deg}
+		@media only screen and (min-width: 1000px) {
+			nav > div .hamburger { display: none; }
+		}
+
+		/* conteúdo */
+		content { display: flex; flex-direction: column; width: 100%; min-height: 100vh; margin: 96px 0 0 0; }
+		@media screen and (min-width: 1000px) {
+			content { margin: 50px 0 0 0; }
+		}
+
+		/* section */
+		section { margin: 0 auto; padding: 32px 20px; max-width: 1320px; }
+		@media screen and (min-width: 1000px) {
+			section { margin-left: 260px; }
+		}
+		@media screen and (min-width: 1200px) {
+			section { margin-left: 300px; }
+		}
+		section.fill { max-width: 100%; margin: 0; padding: 0; }
+		section:first-child { margin-top: 0; }
+		section:last-child { margin-bottom: 0; }
+
+		/* hero */
+		section.hero { min-height: calc(100vh - 96px); background-position: center; background-size: cover; }
+		@media screen and (min-width: 1000px) {
+			section.hero { min-height: calc(100vh - 50px); }
+		}
+
+		/* scrool down animation */
+		.scrooldown { position: absolute; bottom: 2em; left: 0; right: 0; display: flex;
+			filter: drop-shadow(0 0 0.75rem var(--warm-grey-800));
+		}
+		.scrooldown::before, .scrooldown::after {
+			content: ' ';
+			position: absolute; left: 0; right: 0; bottom: 0; width: 0; height: 4em; margin: 0 auto;
+			border-color: var(--warm-grey-50); border-style: none solid none none; border-width: 4px;
+		}
+		.scrooldown::after {
+			animation-name: scrooldownAnimation; animation-duration: 2s; 
+			animation-timing-function: linear; animation-iteration-count: infinite;
+		}
+		.scrooldown::before { width: 25px; height: 25px; rotate: 45deg; border-style: none solid solid none; }
+		@keyframes scrooldownAnimation {
+			0% { height: 0; bottom: 48px; } 50% { height: 48px; bottom: 0; } 100% { height: 0; bottom: 0; }
+		}
+
+		/* footer */
+		footer {
+			overflow: hidden;
+			background-color: var(--warm-grey-800); color: var(--warm-grey-500);
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<input id='drawermenu_toggle' type='checkbox'>
+		<nav>
+			<div>
+				<img class='logo' src='assets/logo.webp'>
+				<ul class='menu'>
+					<li><a href='#'>Coleções</a></li>
+					<li><a href='#'>Artistas</a></li>
+					<li><a href='#'>Quem Somos</a></li>
+					<li><a href='#'>Contato</a></li>
+					<li><a href='#'>Shop</a></li>
+				</ul>
+				<ul class='social'>
+					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
+					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
+					<li><a href='#'><i class='fa-brands fa-instagram'></i></a></li>
+				</ul>
+				<ul class='shop'>
+					<li><a href='#'><i class='fa-solid fa-bag-shopping'></i></a></li>
+					<li><a href='#'><i class='fa-solid fa-user'></i></a></li>
+				</ul>
+				<div class='hamburger'>
+					<label class='hamburger_btn' for='drawermenu_toggle'>
+						<span></span>
+					</label>
+				</div>
+			</div>
+		</nav>
+		<content>
+			<!-- hero component -->
+			<section class='fill hero' style='background-image: url(https://placeimg.com/1280/720/arch/grayscale);'>
+				<div class='scrooldown'></div>
+			</section>
+
+			<!-- section component -->
+			<section>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+				<p>Proin tincidunt fermentum dui in luctus. Duis id ipsum massa. Nulla facilisi. Pellentesque varius elementum mauris. Donec blandit purus sit amet efficitur lobortis. Donec venenatis magna quis lectus feugiat finibus. Suspendisse suscipit velit in purus semper varius. Donec sit amet velit turpis. Maecenas dapibus est vitae gravida viverra. Duis ante arcu, scelerisque eget consequat eu, tempor in sem. Curabitur a placerat justo. Mauris viverra malesuada elit eu sagittis. Integer vitae metus nisi.</p>
+			</section>
+
+			<footer>
+				<section>
+					footer
+				</section>
+				<section>
+					more footer stuff
+					<p>a</p><p>b</p><p>c</p>
+				</section>
+			</footer>
+		</content>
+	</main>
+</body>
+<script src="https://kit.fontawesome.com/d435be3cbe.js" crossorigin="anonymous"></script>
+</html>
